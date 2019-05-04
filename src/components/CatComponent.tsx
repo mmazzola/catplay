@@ -2,13 +2,17 @@ import React from 'react';
 import '../styles/CatComponent.scss';
 
 export interface Props {
-    id: string;
-    image: string;
-    width: number;
-    height: number;
+    cat: Cat;
 }
 
 export interface State {}
+
+export interface Cat {
+    id: string;
+    url: string;
+    width: number;
+    height: number;
+}
 
 export default class CatComponent extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -21,9 +25,9 @@ export default class CatComponent extends React.Component<Props, State> {
         return (
             <div className="Cat">
                 <img
-                    src={this.props.image}
-                    width={this.props.width}
-                    height={this.props.height}
+                    src={this.props.cat.url}
+                    width={this.props.cat.width}
+                    height={this.props.cat.height}
                 />
             </div>
         );
