@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.scss';
-import CatGrid from './components/CatGrid';
+import CatGrid from './components/CatGrid/CatGrid';
 
 const App: React.FC = () => {
     return (
