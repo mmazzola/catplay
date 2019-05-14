@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/App.scss';
 import CatGrid from './components/CatGrid/CatGrid';
+import 'semantic-ui-css/semantic.min.css';
 
 const App: React.FC = () => {
     return (

@@ -1,7 +1,8 @@
 import React from 'react';
-import '../../styles/CatComponent.scss';
+import './CatComponent.scss';
 import FetchingComponent from '../FetchingComponent/FetchingComponent';
 import { State as FetchingState } from '../FetchingComponent/FetchingComponent';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
 
 export interface Props {
     width: number;
@@ -13,7 +14,6 @@ export interface State {}
 export default class CatComponent extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-
         this.state = {};
     }
 
@@ -22,7 +22,19 @@ export default class CatComponent extends React.Component<Props, State> {
             <FetchingComponent url="https://api.thecatapi.com/v1/images/search">
                 {({ data, isLoading, error }: FetchingState) => {
                     if (!data || isLoading) {
-                        return <p>Loading...</p>;
+                        return (
+                            <Segment
+                                className="CatLoader"
+                                style={{
+                                    width: this.props.width,
+                                    height: this.props.height,
+                                }}
+                            >
+                                <Dimmer active>
+                                    <Loader content="Loading" />
+                                </Dimmer>
+                            </Segment>
+                        );
                     }
 
                     if (error) {
@@ -30,12 +42,14 @@ export default class CatComponent extends React.Component<Props, State> {
                     }
 
                     return (
-                        <div className="Cat">
-                            <img
-                                src={data[0].url}
-                                width={this.props.width}
-                                height={this.props.height}
-                            />
+                        <div
+                            className="Cat"
+                            style={{
+                                width: this.props.width,
+                                height: this.props.height,
+                            }}
+                        >
+                            <img src={data[0].url} />
                         </div>
                     );
                 }}

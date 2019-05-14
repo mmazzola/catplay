@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CatComponent from '../CatComponent/CatComponent';
-import '../../styles/CatGrid.scss';
+import './CatGrid.scss';
 
 export interface Props {
     width: number;
